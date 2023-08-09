@@ -18,7 +18,7 @@ export default function FormPicker({items,name,placeholder,PickerItemComponent,w
              width={width}
              numberOfColumns={numberOfColumns}
         />
-    {errors && (<ErrorMessage error={errors[name]} visible={touched[name]} />)}
+   <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   )
 }
