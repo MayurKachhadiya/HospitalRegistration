@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View,Image} from 'react-native'
 import React from 'react'
 import Screen from '../components/Screen'
-import Divider from '../components/Divider';
+//import Divider from '../components/Divider';
 import useAuth from '../auth/useAuth';
 import AppText from '../components/AppText';
-import ListItem from '../components/ListItem';
+//import ListItem from '../components/ListItem';
 import colors from '../config/colors';
-import Icon from '../components/Icon';
+//import Icon from '../components/Icon';
 
 export default function ProfileScreen({navigation}) {
   const {logout,userData} = useAuth();

@@ -3,8 +3,8 @@ import 'react-native-gesture-handler';
 import { StyleSheet, Text, View,LogBox } from 'react-native';
 import AuthContext from './app/auth/context';
 import OfflineNotice from './app/components/offlineNotice';
-import AuthNavigator from './app/Navigator/AuthNavigator';
-import MainNavigator from './app/Navigator/MainNavigator';
+import AuthStack from './app/Navigator/AuthStack';
+import MainStack from './app/Navigator/MainStack';
 import AppLoading from 'expo-app-loading';
 import React,{useState} from 'react';
 import authStore from './app/auth/storage';
@@ -15,7 +15,7 @@ export default function App() {
   const [userData,setUserData] = useState(null);
   const [isReady,setReady] = useState(false);
 
-  const restoreData = async () => {
+  const restoreUser = async () => {
     const user = await authStore.getData();
     if(user){
       const {uid} = JSON.parse(user);
@@ -33,19 +33,19 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={{userData,setUserData}}>
-     <OfflineNotice/>
+      <OfflineNotice/> 
      <NavigationContainer>
-      {userData ? <MainNavigator /> : <AuthNavigator />}
+      {userData ? <MainStack /> : <AuthStack />}
      </NavigationContainer>
    </AuthContext.Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });

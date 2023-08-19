@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import useAuth from '../auth/useAuth';
 import Firebase from '../config/firebase';
 import Screen from '../components/Screen';
-import HistoryCard from '../components/HistoryCard';
-import ActivityIndicator from '../components/ActivityIndicator';
+//import HistoryCard from '../components/HistoryCard';
+//import ActivityIndicator from '../components/ActivityIndicator';
 
 export default function AppointmentHistory() {
   const {userData} = useAuth();

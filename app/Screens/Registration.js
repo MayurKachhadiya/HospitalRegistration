@@ -7,14 +7,62 @@ import { Form,FormField,SubmitButton,FormPicker as Picker,FormImagePicker, Error
 import CategoryPickerItem from '../components/CategoryPickerItem';
 import colors from "../config/colors";
 import ActivityIndicator from '../components/ActivityIndicator';
-import Firebase, { createUserProfile } from '../config/firebase';
+import Firebase, { createHospitalProfile } from '../config/firebase';
 
+
+const categories = [
+  {
+    label:"karad",
+    value: 1,
+  },
+  {
+    label:"Satara",
+    value: 2,
+  },
+  {
+    label:"Phaltan",
+    value: 3,
+  },
+  {
+    label:"Patan",
+    value: 4,
+  },
+  {
+    label:"Khatav",
+    value: 5,
+  },
+  {
+    label:"Koregoan",
+    value: 6,
+  },
+  {
+    label:"Man",
+    value: 8,
+  },
+  {
+    label:"Wai",
+    value: 9,
+  },
+  {
+    label:"Khandala",
+    value: 10,
+  },
+  {
+    label:"Jaoli",
+    value: 11,
+  },
+  {
+    label:"Mahabaleshwar",
+    value: 12,
+  },
+];
 
 
 const validationSchema = Yup.object().shape({
   name:Yup.string().required().min(1).label("Name"),
   Contact_No:Yup.number().required().min(10).label("Contact no."),
   Address: Yup.string().required().label("Address"),
+  Taluka: Yup.object().required().label("Taluka"),
   images: Yup.array().min(1, "Please Select Atleast on Image"),
   password: Yup.string().required().min(4).label("Password")
 })
@@ -27,21 +75,24 @@ export default function Registration() {
   const auth = useAuth();
 
 
-  //Handle Submit
-  const HandleSubmit = async({email,password,name,Contact_No,Address,images} ) => {
-    try {
-      setLoading(true);
-      const {user} = await Firebase.auth().createUserWithEmailAndPassword(email,password);
-      await createUserProfile(user,images,{name,Contact_No,Address,password});
-      auth.logIn(user);
-      setLoading(false);
-    } catch (error) {
-      setError("An unexprected error occured");
-      console.log(error);
-      setLoading(false);
-      return;
-    }
+//   Handle Submit
+   const HandleSubmit = async({email,password,name,Contact_No,Address,Taluka,images} ) => {
+     try {
+       setLoading(true);
+       const {user} = await Firebase.auth().createUserWithEmailAndPassword(email,password);
+       
+       await createHospitalProfile(user,images,{name,Contact_No,Address,Taluka,password});
+       auth.logIn(user);
+       setLoading(false);
+     } catch (error) {
+       setError("An unexprected error occured");
+       console.log(error);
+       setLoading(false);
+       return;
+     }
   }
+
+
 
   return (
     <>
@@ -57,6 +108,7 @@ export default function Registration() {
           name:'',
           Contact_No:"",
           Address:"",
+          Taluka: null,
           images:[],
           email:'',
           password:""
@@ -66,23 +118,28 @@ export default function Registration() {
         >
             <FormImagePicker name="images" />
             <ErrorMessage error={error} />
-            <FormField maxLength={255} name="name" placeholder="Your name" />
-            <FormField maxLength={255} name="email" placeholder="Your Email" />
+            <FormField maxLength={255} name="name" placeholder="Hospital Name" />
+            <FormField maxLength={255} name="email" placeholder="Hospital Email" />
             <FormField
             keyboardType="numeric"
             maxLength={10}
             name="Contact_No"
-            placeholder="Your Contact No."
+            placeholder="Hospital Contact No."
           />
-     
+          <Picker
+                items={categories}
+                name="Taluka"
+                placeholder="Taluka"
+                PickerItemComponent={CategoryPickerItem}
+              />
         <FormField 
             multiline
             name="Address"
-            placeholder="Your Address"
+            placeholder="Hospital Address"
             />
              <FormField 
             name="password"
-            placeholder="Your Password"
+            placeholder="Hospital Password"
             secureTextEntry={true}
             />
             <SubmitButton title="Register" />

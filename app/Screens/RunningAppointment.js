@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import useAuth from '../auth/useAuth'
 import Firebase from '../config/firebase';
 import Screen from '../components/Screen';
-import RunningAppoinmentCard from '../components/RunningAppoinmentCard';
-import ActivityIndicator from '../components/ActivityIndicator';
+//import RunningAppoinmentCard from '../components/RunningAppoinmentCard';
+//import ActivityIndicator from '../components/ActivityIndicator';
 
 export default function RunningAppointment() {
   const [loading,setLoading] = useState(false);

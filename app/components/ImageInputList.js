@@ -12,7 +12,7 @@ export default function ImageInputList({imageUris=[],onRemoveImage,onAddImage}) 
      onContentSizeChange={() => scrollView.current.scrollToEnd()}
      >
             <View style={styles.container}>
-                {/* {
+                 {
                     imageUris.map(uri => 
                         <View key={uri} style={styles.image}>
                             <ImageInput 
@@ -21,8 +21,8 @@ export default function ImageInputList({imageUris=[],onRemoveImage,onAddImage}) 
                             />
                         </View>
                         )
-                } */}
-                <ImageInput onChangeImage={uri => onAddImage(uri)} imageUri={imageUris[0] ? imageUris [0] : null } />
+                } 
+                <ImageInput onChangeImage={uri => onAddImage(uri)} />
             </View>
      </ScrollView>
     </View>
