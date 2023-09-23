@@ -26,7 +26,10 @@ function FormImagePicker({ name }) {
         onAddImage={handleAdd}
         onRemoveImage={handleRemove}
       />
+<<<<<<< HEAD
       
+=======
+>>>>>>> 932d73c (hospital side completed)
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   );

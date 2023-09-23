@@ -2,7 +2,11 @@ import { useContext } from "react";
 import AuthContext from "./context";
 import authStorage from './storage';
 import Firebase from '../config/firebase';
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 932d73c (hospital side completed)
 
 export default useAuth = () => {
     const {userData,setUserData} = useContext(AuthContext);

@@ -47,7 +47,11 @@ export const createHospitalProfile = async (HospitalAuth,Images,additionalData) 
         id:HospitalAuth.uid,
         email,
         createdAt,
+<<<<<<< HEAD
         Images : newImages[0],
+=======
+        Images : newImages,
+>>>>>>> 932d73c (hospital side completed)
         ...additionalData
       })
     }catch(err){

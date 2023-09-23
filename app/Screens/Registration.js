@@ -9,6 +9,7 @@ import colors from "../config/colors";
 import ActivityIndicator from '../components/ActivityIndicator';
 import Firebase, { createHospitalProfile } from '../config/firebase';
 
+<<<<<<< HEAD
 
 const categories = [
   {
@@ -53,6 +54,51 @@ const categories = [
   },
   {
     label:"Mahabaleshwar",
+=======
+const categories = [
+  {
+    label: "Valsad",
+    value: 1,
+  },
+  {
+    label: "Surat",
+    value: 2,
+  },
+  {
+    label: "Vapi",
+    value: 3,
+  },
+  {
+    label: "Bardoli",
+    value: 4,
+  },
+  {
+    label: "Ahmedabad",
+    value: 5,
+  },
+  {
+    label: "Rajkot",
+    value: 6,
+  },
+  {
+    label: "Porbandar",
+    value: 8,
+  },
+  {
+    label: "Patan",
+    value: 9,
+  },
+  {
+    label: "Vadodara",
+    value: 10,
+  },
+  {
+    label: "Junagadh",
+    value: 11,
+  },
+  {
+    label: "Jamnagar",
+>>>>>>> 932d73c (hospital side completed)
     value: 12,
   },
 ];
@@ -62,7 +108,11 @@ const validationSchema = Yup.object().shape({
   name:Yup.string().required().min(1).label("Name"),
   Contact_No:Yup.number().required().min(10).label("Contact no."),
   Address: Yup.string().required().label("Address"),
+<<<<<<< HEAD
   Taluka: Yup.object().required().label("Taluka"),
+=======
+  Taluka: Yup.object().required().nullable().label("Taluka"),
+>>>>>>> 932d73c (hospital side completed)
   images: Yup.array().min(1, "Please Select Atleast on Image"),
   password: Yup.string().required().min(4).label("Password")
 })
@@ -75,6 +125,7 @@ export default function Registration() {
   const auth = useAuth();
 
 
+<<<<<<< HEAD
 //   Handle Submit
    const HandleSubmit = async({email,password,name,Contact_No,Address,Taluka,images} ) => {
      try {
@@ -94,6 +145,24 @@ export default function Registration() {
 
 
 
+=======
+  //Handle Submit
+  const HandleSubmit = async({email,password,name,Contact_No,Address,Taluka,images} ) => {
+    try {
+      setLoading(true);
+      const {user} = await Firebase.auth().createUserWithEmailAndPassword(email,password);
+      await createHospitalProfile(user,images,{name,Contact_No,Address,Taluka,password});
+      auth.logIn(user);
+      setLoading(false);
+    } catch (error) {
+      setError("An unexprected error occured");
+      console.log(error);
+      setLoading(false);
+      return;
+    }
+  }
+
+>>>>>>> 932d73c (hospital side completed)
   return (
     <>
     <ActivityIndicator visible={loading} />
@@ -108,7 +177,11 @@ export default function Registration() {
           name:'',
           Contact_No:"",
           Address:"",
+<<<<<<< HEAD
           Taluka: null,
+=======
+          Taluka:null,
+>>>>>>> 932d73c (hospital side completed)
           images:[],
           email:'',
           password:""
@@ -131,7 +204,12 @@ export default function Registration() {
                 name="Taluka"
                 placeholder="Taluka"
                 PickerItemComponent={CategoryPickerItem}
+<<<<<<< HEAD
               />
+=======
+            /> 
+     
+>>>>>>> 932d73c (hospital side completed)
         <FormField 
             multiline
             name="Address"

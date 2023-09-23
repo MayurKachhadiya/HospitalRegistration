@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,Image} from 'react-native'
 import React from 'react'
 import Screen from '../components/Screen'
+<<<<<<< HEAD
 //import Divider from '../components/Divider';
 import useAuth from '../auth/useAuth';
 import AppText from '../components/AppText';
@@ -11,6 +12,18 @@ import colors from '../config/colors';
 export default function ProfileScreen({navigation}) {
   const {logout,userData} = useAuth();
   const {email,name,photoUrl} = userData;
+=======
+import Divider from '../components/Divider';
+import useAuth from '../auth/useAuth';
+import AppText from '../components/AppText';
+import ListItem from '../components/ListItem';
+import colors from '../config/colors';
+import Icon from '../components/Icon';
+
+export default function ProfileScreen({navigation}) {
+  const {logout,userData} = useAuth();
+  const {email,name,Images} = userData;
+>>>>>>> 932d73c (hospital side completed)
   return (
    <Screen>
      <View style={styles.container}>
@@ -19,7 +32,11 @@ export default function ProfileScreen({navigation}) {
             <View style={styles.profileLogoContainer}>
               <Image 
                   style={styles.profileLogo}
+<<<<<<< HEAD
                   source={{uri : photoUrl}} 
+=======
+                  source={{uri : Images}} 
+>>>>>>> 932d73c (hospital side completed)
               />
 
             </View>

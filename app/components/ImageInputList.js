@@ -12,7 +12,11 @@ export default function ImageInputList({imageUris=[],onRemoveImage,onAddImage}) 
      onContentSizeChange={() => scrollView.current.scrollToEnd()}
      >
             <View style={styles.container}>
+<<<<<<< HEAD
                  {
+=======
+                {
+>>>>>>> 932d73c (hospital side completed)
                     imageUris.map(uri => 
                         <View key={uri} style={styles.image}>
                             <ImageInput 
@@ -21,7 +25,11 @@ export default function ImageInputList({imageUris=[],onRemoveImage,onAddImage}) 
                             />
                         </View>
                         )
+<<<<<<< HEAD
                 } 
+=======
+                }
+>>>>>>> 932d73c (hospital side completed)
                 <ImageInput onChangeImage={uri => onAddImage(uri)} />
             </View>
      </ScrollView>

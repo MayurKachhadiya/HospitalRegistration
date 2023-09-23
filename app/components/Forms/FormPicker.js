@@ -18,7 +18,11 @@ export default function FormPicker({items,name,placeholder,PickerItemComponent,w
              width={width}
              numberOfColumns={numberOfColumns}
         />
+<<<<<<< HEAD
    <ErrorMessage error={errors[name]} visible={touched[name]} />
+=======
+    {errors && (<ErrorMessage error={errors[name]} visible={touched[name]} />)}
+>>>>>>> 932d73c (hospital side completed)
     </>
   )
 }

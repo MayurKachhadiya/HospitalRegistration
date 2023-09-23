@@ -9,6 +9,10 @@ import ProfileScreen from '../Screens/ProfileScreen';
 import RunningAppointment from '../Screens/RunningAppointment';
 import AppointmentHistory from '../Screens/AppointmentHistory';
 import Aboutus from '../Screens/Aboutus';
+<<<<<<< HEAD
+=======
+import Contactus from '../Screens/Contactus';
+>>>>>>> 932d73c (hospital side completed)
 
 
 const Stack = createStackNavigator();
@@ -20,6 +24,10 @@ export default function MainStack() {
         <Stack.Screen name="RunningAppointments" component={RunningAppointment} />
         <Stack.Screen name="AppointMentHistory" component={AppointmentHistory} />
         <Stack.Screen name="Aboutus" component={Aboutus} />
+<<<<<<< HEAD
+=======
+        <Stack.Screen name="Contactus" component={Contactus} />
+>>>>>>> 932d73c (hospital side completed)
     </Stack.Navigator>
   )
 }
